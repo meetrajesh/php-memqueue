@@ -1,0 +1,49 @@
+php-memqueue
+============
+
+Synopsis
+--------
+php-memqueue is a simple PHP-based implementation of memqueue over memcache
+
+Author
+------
+Rajesh Kumar <rajesh@meetrajesh.com>
+
+Coded on
+--------
+Sunday, 9th December 2010
+
+Usage
+-----
+
+$q = new memq('testq');
+echo $q->count();
+echo $q->is_empty();
+$q->push('a');
+$q->push('b');
+$q->push('c');
+echo $q->count();
+echo $q->is_empty();
+echo $q->peek();
+echo $q->pop();
+echo $q->count();
+echo $q->pop();
+$q->push('d');
+
+$q2 = new memq('testq2');
+$q2->push('a2');
+
+echo $q->pop();
+echo $q->peek();
+echo $q->pop();
+echo $q->pop();
+echo $q->peek();
+
+echo $q2->pop();
+
+$q3 = new memq('testq3');
+$q3->push('a');
+$q3->push('b');
+$q3->push('c');
+$q3->delete();
+echo $q3->count();
